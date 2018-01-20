@@ -27,8 +27,8 @@ def convertToTxt(xmlFilePath, newTxtFolder):
 	for a in tree.iter("imagesize"): #finding img width and height
 	    x = a.find('nrows').text
 	    y = a.find('ncols').text
-	    imgWidth = int(x)
-	    imgHeight = int(y)
+	    imgWidth = int(y)
+	    imgHeight = int(x)
 	txtFormat = ""
 
 	#formatting txt
@@ -39,8 +39,8 @@ def convertToTxt(xmlFilePath, newTxtFolder):
 		except:
 			width = 0
 			height = 0
-		xCenter = int(xTuple[0]) + width / 2
-		yCenter = int(yTuple[0]) + height / 2    
+		xCenter = int(min(xTuple)) + width / 2
+		yCenter = int(min(yTuple)) + height / 2
 		txtFormat += "0 " + str(float(xCenter)/imgWidth) + " " + str(float(yCenter)/imgHeight) + " " + str(float(width)/imgWidth) + " " + str(float(height)/imgHeight) + "\n"
 	
 	#writing xml onto txt file
