@@ -29,7 +29,6 @@ def convertToTxt(xmlFilePath, newTxtFolder):
 	    y = a.find('ncols').text
 	    imgWidth = int(x)
 	    imgHeight = int(y)
-
 	txtFormat = ""
 
 	#formatting txt
@@ -40,8 +39,8 @@ def convertToTxt(xmlFilePath, newTxtFolder):
 		except:
 			width = 0
 			height = 0
-		xCenter = width / 2
-		yCenter = height / 2
+		xCenter = int(xTuple[0]) + width / 2
+		yCenter = int(yTuple[0]) + height / 2    
 		txtFormat += "0 " + str(float(xCenter)/imgWidth) + " " + str(float(yCenter)/imgHeight) + " " + str(float(width)/imgWidth) + " " + str(float(height)/imgHeight) + "\n"
 	
 	#writing xml onto txt file
