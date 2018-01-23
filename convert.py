@@ -53,6 +53,6 @@ def convertToTxt(xmlFilePath, newTxtFolder):
 def convertXMLToText(xmlFolder=sys.argv[1],newTxtFolder=sys.argv[2]):
 	for fn in os.listdir(xmlFolder):
 		qualifiedName = xmlFolder + "/" + fn
-		convertToTxt(qualifiedName,newTxtFolder)
+		convertToTxt(qualifiedName, newTxtFolder)
 
 convertXMLToText()
