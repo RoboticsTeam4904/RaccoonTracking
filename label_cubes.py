@@ -29,7 +29,7 @@ def label(img_names, debug=False):
 			print width, height
 		pipeline.process(img)
 		contours = pipeline.filter_contours_output
-		filtered_contours = filterMinArea(contours, min_area=width*height/2500.0)
+		filtered_contours = filterMinArea(contours, min_area=width*height/750.0)
 		if len(filtered_contours) == 0:
 			bounding_boxes.append((np.array([]), [width, height, img_name]))
 			continue
