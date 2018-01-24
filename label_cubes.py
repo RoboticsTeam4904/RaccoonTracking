@@ -31,7 +31,7 @@ def label(img_names, debug=False):
 		contours = pipeline.filter_contours_output
 		filtered_contours = filterMinArea(contours, min_area=width*height/2500.0)
 		if len(filtered_contours) == 0:
-			bounding_boxes.append(np.array([]))
+			bounding_boxes.append((np.array([]), [width, height, img_name]))
 			continue
 		boxes = np.array([cv2.boundingRect(contour) for contour in filtered_contours]) #X,Y,W,H
 		X, Y, W, H = boxes[:,0], boxes[:,1], boxes[:,2], boxes[:,3]
@@ -42,7 +42,11 @@ def label(img_names, debug=False):
 		if debug:
 			print X, Y, W, H
 		boxes = np.rot90(np.array([X,Y,W,H]))
-		bounding_boxes.append(boxes)
+		# for box in boxes:
+		# 	box = np.append(box, width)
+		# 	box = np.append(box, height)
+		# 	box = np.append(box, img_name)
+		bounding_boxes.append((boxes, [width, height, img_name]))
 		img_times.append(time.time()-start_time)
 	print np.average(img_times)
 	if debug:
